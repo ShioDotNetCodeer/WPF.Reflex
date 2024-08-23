@@ -11,8 +11,7 @@ namespace WPF.Reflex
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = App.Current.Services.GetService<MainWindowViewModel>(); ;
-
+            this.DataContext = App.Current.Services.GetService<MainWindowViewModel>(); 
         }
     }
 }

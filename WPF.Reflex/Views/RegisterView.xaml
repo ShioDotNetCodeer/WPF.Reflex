@@ -17,24 +17,13 @@
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <StackPanel Orientation="Vertical">
-                <TextBlock FontSize="16" Text="请选择地址" />
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="auto" />
-                    </Grid.ColumnDefinitions>
-                    <TextBox
-                        Height="20"
-                        VerticalContentAlignment="Center"
-                        IsReadOnly="True"
-                        Text="123"
-                        TextChanged="TextBox_TextChanged" />
-                    <Button
-                        Grid.Column="1"
-                        Width="16"
-                        Command=""
-                        Content="选" />
-                </Grid>
+                <Button
+                    Grid.Column="1"
+                    Height="60"
+                    Padding="10"
+                    HorizontalAlignment="Center"
+                    Command="{Binding SelectDLLCommand}"
+                    Content="{Binding SelectBtnText}" />
                 <StackPanel Orientation="Horizontal" />
 
             </StackPanel>
