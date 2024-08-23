@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35219.272
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.Reflex", "WPF.Reflex\WPF.Reflex.csproj", "{1C42318C-04B4-41FD-B8C7-203FC111A32F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C42318C-04B4-41FD-B8C7-203FC111A32F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C42318C-04B4-41FD-B8C7-203FC111A32F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C42318C-04B4-41FD-B8C7-203FC111A32F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C42318C-04B4-41FD-B8C7-203FC111A32F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F7687A7D-1E4B-4290-8A40-35F4DEA28AAA}
+	EndGlobalSection
+EndGlobal
