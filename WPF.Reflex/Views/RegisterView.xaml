@@ -7,24 +7,38 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="{Binding Title}"
     Width="400"
+    Height="450"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Border Padding="10">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <StackPanel Orientation="Vertical">
-                <Button
-                    Grid.Column="1"
-                    Height="60"
-                    Padding="10"
-                    HorizontalAlignment="Center"
-                    Command="{Binding SelectDLLCommand}"
-                    Content="{Binding SelectBtnText}" />
-                <StackPanel Orientation="Horizontal" />
+                <ListBox
+                    Height="300"
+                    Margin="0,10,0,10"
+                    ItemsSource="{Binding Logs}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="8*" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Grid.Column="0"
+                        Height="60"
+                        Padding="10"
+                        HorizontalAlignment="Center"
+                        Command="{Binding SelectDLLCommand}"
+                        Content="请选择" />
+                    <Button
+                        Grid.Column="1"
+                        Padding="10"
+                        Command="{Binding RegisterCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"
+                        Content="注册DLL" />
+                </Grid>
 
             </StackPanel>
         </Grid>

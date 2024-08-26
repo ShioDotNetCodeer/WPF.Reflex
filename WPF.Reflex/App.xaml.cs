@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Windows;
 using WPF.Reflex.Service;
 using WPF.Reflex.ViewModels;
@@ -24,9 +25,11 @@ namespace WPF.Reflex
         /// Gets the <see cref="IServiceProvider"/> instance to resolve application services.
         /// </summary>
         public IServiceProvider Services { get; }
+        public string DllPath { get; }
         public App()
         {
             Services = ConfigureServices();
+            DllPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DLL");
         }
 
         protected override void OnStartup(StartupEventArgs e)
@@ -41,6 +44,10 @@ namespace WPF.Reflex
             var services = new ServiceCollection();
             services.AddSingleton<InstancesService>();
             services.AddSingleton<DialogService>();
+            services.AddTransient<CheckDllService>();
+
+
+
             services.AddSingleton<MainWindowViewModel>();
             services.AddTransient<RegisterViewViewModel>();
             services.AddTransient(sp => new RegisterView { DataContext = sp.GetRequiredService<RegisterViewViewModel>() });

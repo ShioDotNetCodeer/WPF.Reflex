@@ -1,12 +1,6 @@
 ﻿using Coom.IBaseService;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WPF.Reflex.Service
 {
@@ -16,7 +10,7 @@ namespace WPF.Reflex.Service
         private readonly string _dllPath;
         public InstancesService()
         {
-            _dllPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DLL");
+            _dllPath = App.Current.DllPath;
             Init();
         }
 
@@ -45,11 +39,18 @@ namespace WPF.Reflex.Service
                 var typelist = Assembly.LoadFile(file).GetTypes().Where(x => x.IsAbstract == false).ToList();
                 foreach (var type in typelist)
                 {
-                    var has= type.GetInterfaces().Contains(typeof(IBaseProtocolService));
-                    if (!has) 
+                    var has = type.GetInterfaces().Contains(typeof(IBaseProtocolService));
+                    if (!has)
                         continue;
+
+                    var fi = type.GetCustomAttribute<FuncInfoAttribute>();
+                    if (fi == null)
+                        continue;
+
                     InstancesType dllType = new InstancesType();
-                    dllType.IsRequest = type.Name.Contains("Request");
+                    dllType.Alias = fi.FuncName;
+                    dllType.IsRequest = fi.IsRequest;
+                    dllType.FuncCode = fi.FuncCode;
                     dllType.Instances = Activator.CreateInstance(type) as IBaseProtocolService; ;
                     dllType.Propertys = GetPropertyAndSort(type);
                     coomContainer.AllTypes.Add(dllType);
