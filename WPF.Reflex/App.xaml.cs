@@ -36,8 +36,13 @@ namespace WPF.Reflex
         {
             Ioc.Default.ConfigureServices(Services);
             base.OnStartup(e);
+            DispatcherUnhandledException += App_DispatcherUnhandledException;
         }
 
+        private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            e.Handled = true;
+        }
 
         private static IServiceProvider ConfigureServices()
         {
