@@ -9,6 +9,8 @@
     Title="MainWindow"
     Width="800"
     Height="450"
+    Background="{DynamicResource BackgroundBrush}"
+    Foreground="{DynamicResource ForegroundBrush}"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.Resources>
@@ -22,14 +24,23 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Menu
             Height="30"
             VerticalAlignment="Center"
-            FontSize="16">
-            <MenuItem Header="DLL配置" Style="{StaticResource MenuItem}">
+            Background="{DynamicResource BackgroundBrush}"
+            FontSize="16"
+            Foreground="{DynamicResource ForegroundBrush}">
+            <MenuItem
+                Background="{DynamicResource BackgroundBrush}"
+                Foreground="{DynamicResource ForegroundBrush}"
+                Header="DLL配置"
+                Style="{StaticResource MenuItem}">
                 <MenuItem
+                    Background="{DynamicResource BackgroundBrush}"
                     Command="{Binding RegisterDllCommand}"
+                    Foreground="{DynamicResource ForegroundBrush}"
                     Header="注册DLL"
                     Style="{StaticResource MenuItem}" />
                 <MenuItem
@@ -46,12 +57,17 @@
 
             <Border BorderBrush="Black" BorderThickness="0,0,1,0">
                 <TabControl
+                    Background="{DynamicResource BackgroundBrush}"
                     BorderThickness="1"
+                    Foreground="{DynamicResource ForegroundBrush}"
                     ItemsSource="{Binding CoomContainers}"
                     SelectedIndex="0">
                     <TabControl.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding DllName}" />
+                            <TextBlock
+                                Background="{DynamicResource BackgroundBrush}"
+                                Foreground="{DynamicResource ForegroundBrush}"
+                                Text="{Binding DllName}" />
                         </DataTemplate>
                     </TabControl.ItemTemplate>
 
@@ -69,9 +85,11 @@
                                             <Button
                                                 Margin="5"
                                                 Padding="5"
+                                                Background="{DynamicResource BackgroundBrush}"
                                                 Command="{Binding DataContext.ExecCommand, RelativeSource={RelativeSource AncestorType=Window}}"
                                                 CommandParameter="{Binding}"
-                                                Content="{Binding Alias}" />
+                                                Content="{Binding Alias}"
+                                                Foreground="{DynamicResource ForegroundBrush}" />
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
@@ -79,7 +97,6 @@
 
                         </DataTemplate>
                     </TabControl.ContentTemplate>
-
                 </TabControl>
             </Border>
 
@@ -87,7 +104,11 @@
                 <StackPanel Orientation="Vertical">
                     <TextBlock FontSize="20" Text="{Binding Current.Alias}" />
                     <Border Padding="0,15,0,10">
-                        <ItemsControl x:Uid="CommandPanel" ItemsSource="{Binding Current.AliasPropertyInfos}">
+                        <ItemsControl
+                            x:Uid="CommandPanel"
+                            Background="{DynamicResource BackgroundBrush}"
+                            Foreground="{DynamicResource ForegroundBrush}"
+                            ItemsSource="{Binding Current.AliasPropertyInfos}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Margin="0,5,0,5" Orientation="Horizontal">
@@ -95,15 +116,19 @@
                                             Width="100"
                                             Padding="10,5,10,5"
                                             HorizontalContentAlignment="Center"
+                                            Background="{DynamicResource BackgroundBrush}"
                                             BorderThickness="1,1,0,1"
                                             FontSize="16"
+                                            Foreground="{DynamicResource ForegroundBrush}"
                                             IsReadOnly="True"
                                             Text="{Binding Alias}" />
                                         <TextBox
                                             MinWidth="80"
                                             Padding="10,5,10,5"
                                             HorizontalContentAlignment="Center"
+                                            Background="{DynamicResource BackgroundBrush}"
                                             FontSize="16"
+                                            Foreground="{DynamicResource ForegroundBrush}"
                                             Text="{Binding Value}" />
                                     </StackPanel>
                                 </DataTemplate>
@@ -112,13 +137,17 @@
                     </Border>
                     <Button
                         Padding="5"
+                        Background="{DynamicResource BackgroundBrush}"
                         Command="{Binding Path=Current.ExecCommand}"
-                        Content="执行" />
+                        Content="执行"
+                        Foreground="{DynamicResource ForegroundBrush}" />
                     <Border BorderBrush="Black" BorderThickness="1">
                         <TextBox
                             Margin="0,10,0,0"
                             Padding="5"
+                            Background="{DynamicResource BackgroundBrush}"
                             FontSize="16"
+                            Foreground="{DynamicResource ForegroundBrush}"
                             IsReadOnly="True"
                             Text="{Binding Current.ProtocolStr}" />
                     </Border>
@@ -126,6 +155,12 @@
             </Border>
 
         </Grid>
-
+        <Button
+            Grid.Row="2"
+            Padding="0,10,0,10"
+            Background="{DynamicResource BackgroundBrush}"
+            Click="Button_Click"
+            Content="切换主题"
+            Foreground="{DynamicResource ForegroundBrush}" />
     </Grid>
 </Window>
